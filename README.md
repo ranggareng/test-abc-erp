@@ -41,7 +41,7 @@ php artisan key:generate
 ```
 - Run Database Migration and Seed
 ```
-php artisan migration --seed
+php artisan migrate --seed
 ```
 
 ### Executing Program
