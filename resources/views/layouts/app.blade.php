@@ -51,7 +51,6 @@
         @yield('content')
     </div>
 
-    @include('layouts.modal')
     @include('layouts.footer')
 
     <!-- Javascript -->

@@ -20,7 +20,7 @@
         </div>
         <div class="sgx-table alt">
             <div class="options no-scrollbar">
-                <a href="employee-view.php" class="item">
+                <a href="create" class="item">
                     <img src="icons/plus-dark.svg" class="icon">Register
                 </a>
                 <a href="#" class="item" @click="showModalSearch()" data-target="#search-tray">
@@ -50,7 +50,7 @@
                   <tbody>
                     <tr v-for="employee in listEmployee.data" v-key="employee.id">
                         <td> {{ employee.name }} </td>
-                        <td> {{ employee.status ? "Active" : "Inactive" }} </td>
+                        <td> {{ employee.active ? "Active" : "Inactive" }} </td>
                         <td> {{ employee.nik }} </td>
                         <td> {{ employee.display_joined }} </td>
                         <td><img class="inline-icon" src="/icons/clock-dark.svg">{{ employee.srv_year }} </td>
@@ -78,7 +78,7 @@
                         Employee Database Search
                     </div>
                     <div class="modal-body">
-                        <form @submit="doSearch">
+                        <form @submit="handleSubmit">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" class="form-control hms-control hms-small first-focus" :class="v$.searchKeyword.$errors.length > 0 ? ' is-invalid' : ''" v-model="searchKeyword">
@@ -217,15 +217,17 @@ export default {
         closeModalSearch(){
             this.modalSearchOpen = false;
         },
-        async doSearch(e){
-            e.preventDefault();
-
+        async doSearch(){
             const isFormCorrect = await this.v$.$validate();
             
             if (!isFormCorrect) return
             
             // actually submit form
             this.callAPISearchAndFilter(`${process.env.MIX_BASE_API_URL}/employees?search=${this.searchKeyword}`);
+        },
+        async handleSubmit(e){
+            e.preventDefault();
+            this.doSearch();    
         },
         removeFilter(){
             this.searchKeyword = '';

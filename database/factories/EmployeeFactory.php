@@ -18,6 +18,7 @@ class EmployeeFactory extends Factory
             'active' => $this->faker->boolean(),
             'NIK' => "2023".$this->faker->randomNumber(6, true),
             'joined' => $this->faker->dateTimeBetween('2023-01-01', '2023-02-07'),
+            'dob' => $this->faker->date(),
             'company_id' => rand(1,3),
             'department_id' => rand(1, 10),
             'religion_id' => rand(1, 6)

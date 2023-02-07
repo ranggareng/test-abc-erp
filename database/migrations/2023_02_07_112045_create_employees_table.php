@@ -19,6 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->boolean('active')->default(false);
             $table->char('NIK', 12)->unique();
             $table->datetime('joined');
+            $table->date('dob');
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('department_id')->nullable();
             $table->unsignedBigInteger('religion_id')->nullable();

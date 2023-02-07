@@ -6,37 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 // Model
-use App\Models\Employee;
+use App\Models\MasterCompany;
 
-// Resource
-use App\Http\Resources\EmployeeCollection;
-use App\Http\Resources\EmployeeResource;
+// Resource and Collection
+use App\Http\Resources\MasterCompanyCollection;
 
-// Request
-use App\Http\Requests\Employee\StoreRequest;
-
-class EmployeeController extends Controller
+class MasterCompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $data = Employee::filter($request->get('search'))->joinTable()->paginate(25)->withQueryString();
-        return new EmployeeCollection($data);
-    }
-
-    public function summary()
-    {
-        $data = Employee::all();
-        $active = ($data->where('active', true))->count();
-        return response()->json([
-            'count' => $data->count(),
-            'active' => $active,
-            'inactive' => $data->count() - $active
-        ]);
+        $companies = MasterCompany::active(true)->get();
+        return new MasterCompanyCollection($companies);
     }
 
     /**
@@ -55,14 +40,9 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequest $request)
+    public function store(Request $request)
     {
-        $employee = Employee::create($request->all());
-
-        if($employee)
-            return response()->json(['success' => true]);
-        else
-            return response()->json(['success' => false]);
+        //
     }
 
     /**

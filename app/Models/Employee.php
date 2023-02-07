@@ -9,8 +9,13 @@ class Employee extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'company_id', 'department_id', 'name', 'nik', 'active', 'joined', 'dob'
+    ];
+
     protected $casts = [
-        'joined' => 'datetime'
+        'joined' => 'datetime',
+        'active' => 'boolean'
     ];
 
     function scopeJoinTable($query){

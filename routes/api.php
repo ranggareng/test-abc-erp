@@ -19,6 +19,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'employees'], function(){
-    Route::get('/', [\App\Http\Controllers\Api\EmployeeController::class, 'index'])->name('employee.list');
-    Route::get('/summary', [\App\Http\Controllers\Api\EmployeeController::class, 'summary'])->name('employee.summary');
+    Route::get('/', [\App\Http\Controllers\API\EmployeeController::class, 'index'])->name('employee.list');
+    Route::post('/', [\App\Http\Controllers\API\EmployeeController::class, 'store'])->name('employee.store');
+    Route::get('/summary', [\App\Http\Controllers\API\EmployeeController::class, 'summary'])->name('employee.summary');
+});
+
+Route::group(['prefix' => 'master'], function(){
+    Route::get('/companies', [\App\Http\Controllers\API\MasterCompanyController::class, 'index'])->name('master.company.list');
+    Route::get('/departments', [\App\Http\Controllers\API\MasterDepartmentController::class, 'index'])->name('master.department.list');
 });

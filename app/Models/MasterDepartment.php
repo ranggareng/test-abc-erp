@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MasterDepartment extends Model
 {
     use HasFactory;
+
+    public function scopeActive($query, $param){
+        return $query->where('active', $param);
+    }
 }
