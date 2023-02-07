@@ -1,9 +1,7 @@
-require('./bootstrap');
+import { createApp } from 'vue'
+import EmployeeComponent from './components/EmployeeComponent';
 
-window.Vue = require('vue');
+const app = createApp({});
 
-Vue.component('example', require('./components/ExampleComponent.vue').default);
-
-const app = new Vue({
-    el: '#app'
-});
+app.component('employee-component', EmployeeComponent);
+app.mount("#app");

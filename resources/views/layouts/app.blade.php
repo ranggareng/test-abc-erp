@@ -43,16 +43,19 @@
     <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
     <link rel="stylesheet" href="{{ asset('css/mobile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
-
-    <!-- Javascript -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
     @include('layouts.nav')
 
+    <div id="app">
+        @yield('content')
+    </div>
+
     @include('layouts.modal')
     @include('layouts.footer')
 
+    <!-- Javascript -->
+    <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
         })
