@@ -9,18 +9,18 @@
 <link rel="stylesheet" href="http://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 
 <!-- custom scripts -->
-<script src="{{ asset('js/functions.js') }}"></script>
+<!-- <script src="{{ asset('js/functions.js') }}"></script> -->
 
 <!-- Scripts for ALL pages -->
 <script type="text/javascript">
 	$(document).ready(function() {
 
 		// general scripts
-		kuiperUi();
-		kuiperTableFilters();
+		// kuiperUi();
+		// kuiperTableFilters();
 
 		// select2
-		$('.initiate-select2').select2({width: '100%',});
+		// $('.initiate-select2').select2({width: '100%',});
 
 	});
 </script>

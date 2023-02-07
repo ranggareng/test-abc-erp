@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'employees'], function(){
+    Route::get('/', [\App\Http\Controllers\Api\EmployeeController::class, 'index'])->name('employee.list');
+    Route::get('/summary', [\App\Http\Controllers\Api\EmployeeController::class, 'summary'])->name('employee.summary');
+});
