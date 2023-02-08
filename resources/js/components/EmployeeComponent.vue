@@ -49,8 +49,13 @@
                   </thead>
                   <tbody>
                     <tr v-for="employee in listEmployee.data" v-key="employee.id">
-                        <td> {{ employee.name }} </td>
-                        <td> {{ employee.active ? "Active" : "Inactive" }} </td>
+                        <td> 
+                            <div class="one-line text-nowrap d-block">
+                                <img src="img/initials/1_a.png" class="thumb s15 round">
+                                <a href="#">{{ employee.name }}</a>
+                            </div>
+                        </td>
+                        <td :class="employee.active ? 'text-center bg-light-blue' : 'text-center bg-light-red'" > {{ employee.active ? "Active" : "Inactive" }} </td>
                         <td> {{ employee.nik }} </td>
                         <td> {{ employee.display_joined }} </td>
                         <td><img class="inline-icon" src="/icons/clock-dark.svg">{{ employee.srv_year }} </td>
